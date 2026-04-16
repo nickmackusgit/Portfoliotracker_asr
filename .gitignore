@@ -1,0 +1,13 @@
+# Python tijdelijke bestanden
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtuele omgevingen
+venv/
+.venv/
+env/
+
+# Besturingssysteem bestanden
+.DS_Store
+Thumbs.db
