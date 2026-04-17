@@ -31,3 +31,6 @@ class PortfolioView:
         
         print("-" * 40)
         print(f"TOTALE PORTFOLIO WAARDE: €{total_value:,.2f}")
+
+    def get_user_input(self, prompt):
+        return input(f"{prompt}: ")

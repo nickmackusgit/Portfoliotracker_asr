@@ -10,17 +10,23 @@ class PortfolioController:
         while True:
             choice = self.view.show_menu()
             if choice == '1':
-                new_asset = Asset("AAPL", "Tech", "Equity", 10, 150.0)
+                ticker = self.view.get_user_input("Voer de ticker in (bijv. AAPL)")
+                sector = self.view.get_user_input("Voer de sector in (bijv. Tech)")
+                asset_class = self.view.get_user_input("Voer de asset class in (bijv. Equity)")
+                
+                quantity = float(self.view.get_user_input("Voer het aantal stuks in"))
+                price = float(self.view.get_user_input("Voer de aankoopprijs in"))
+
+                new_asset = Asset(ticker, sector, asset_class, quantity, price)
                 self.model.add_asset(new_asset)
-                self.view.display_message("Asset toegevoegd!")
+                
+                self.view.display_message(f"Asset {ticker} succesvol toegevoegd!")
 
             elif choice == '2':
-                # Haal data uit het model
                 assets = self.model.assets
                 total_val = self.model.calculate_total_value()
                 weights = self.model.get_sector_weights()
                 
-                # Toon het portfolio overzicht
                 self.view.show_portfolio(assets, total_val)
                 # Toon de sectorverdeling
                 self.view.show_weights(weights, "Sector")
